@@ -1,0 +1,51 @@
+bookReviewId,bookReviewAuthor,bookReviewTitle,bookReview,book,bookReviewRating
+1,45,"A Must-Read","An epic journey of self-discovery and exploration. Couldn't put it down!",1,2
+2,78,"Thought-Provoking","A chilling portrayal of a dystopian future. Orwell's vision is haunting.",3,1.5
+3,19,"Timeless Classic","A beautiful exploration of love and society. Austen's best work.",27,4.9
+4,56,"Adventure Awaits","A thrilling adventure with Huck and Jim. Twain's storytelling is unmatched.",12,2.7
+5,89,"Powerful and Moving","A deeply moving story about justice and morality. A must-read.",8,1.9
+6,34,"Magical Journey","A magical start to an unforgettable series. Rowling's world is enchanting.",19,1
+7,11,"A Battle of Wits","Hemingway's tale of struggle and perseverance is timeless.",5,4
+8,67,"Captivating","A gripping tale of love and loss. Fitzgerald's prose is beautiful.",22,5
+9,10,"Historical Masterpiece","A vivid portrayal of the French Revolution. Dickens at his best.",1,3
+10,92,"Epic Saga","Tolstoy's epic is a monumental achievement in literature.",30,3
+11,45,"Intriguing Mystery","Christie's mystery keeps you guessing until the very end.",15,2
+12,78,"Tragic and Poignant","Shakespeare's tragedy is a timeless exploration of human nature.",3,1
+13,63,"Epic Fantasy","Martin's world is rich and immersive. A must-read for fantasy lovers.",27,1
+14,56,"Enchanting Tale","Tolkien's adventure is a delightful journey into a magical world.",12,1.8
+15,89,"Suspenseful","A gripping mystery with Sherlock Holmes at his best.",8,2.7
+16,34,"Sci-Fi Classic","Asimov's vision of the future is both fascinating and thought-provoking.",19,2.8
+17,18,"Haunting","Shelley's tale of creation and destruction is a timeless classic.",5,1.7
+18,67,"Chilling","King's horror novel is a masterclass in suspense and terror.",22,2.8
+19,50,"Dystopian","Bradbury's vision of a bookless future is both terrifying and thought-provoking.",1,1.7
+20,92,"Heartbreaking","Steinbeck's tale of friendship and dreams is deeply moving.",30,2.8
+21,45,"Intense","Brontë's exploration of love and revenge is a powerful read.",15,1.7
+22,78,"Satirical","Orwell's allegory is a sharp critique of totalitarianism.",3,1.8
+23,3,"Charming","A delightful exploration of love and society. Austen's wit shines through.",27,1.7
+24,56,"Adventurous","Twain's tale of Tom Sawyer is a fun and exciting read.",12,2.6
+25,89,"Thought-Provoking","Lee's follow-up to Mockingbird is a powerful exploration of race and identity.",8,2.7
+26,34,"Magical","Rowling's second book in the series is just as enchanting as the first.",19,3.8
+27,11,"Heart-Wrenching","Hemingway's tale of love and loss during war is deeply moving.",5,2.7
+28,67,"Tragic","Fitzgerald's exploration of love and ambition is a powerful read.",22,1.8
+29,10,"Classic","Dickens' tale of Pip's growth and development is a timeless classic.",1,1.7
+30,92,"Tragic Love","Tolstoy's tale of Anna Karenina is a powerful exploration of love and society.",30,2.8
+31,45,"Gripping","Christie's mystery is a masterclass in suspense.",15,2.7
+32,78,"Dark and Poignant","Shakespeare's tragedy is a timeless exploration of ambition and guilt.",3,2.8
+33,13,"Epic","Martin's second book in the series is just as immersive as the first.",27,3.9
+34,56,"Enchanting","Tolkien's epic is a delightful journey into a magical world.",12,1.8
+35,89,"Suspenseful","Doyle's mystery with Sherlock Holmes is a gripping read.",8,1.7
+36,34,"Fascinating","Asimov's collection of stories is a fascinating exploration of robotics.",19,1.8
+37,10,"Haunting","Shelley's tale of the last man on earth is a powerful read.",5,4.7
+38,67,"Terrifying","King's horror novel is a masterclass in suspense and terror.",22,1.8
+39,10,"Sci-Fi","Bradbury's tales of Mars are both fascinating and thought-provoking.",1,1.7
+40,92,"Heart-Wrenching","Steinbeck's tale of the Joad family's journey is deeply moving.",30,1.8
+41,45,"Charming","Brontë's tale of a governess is a delightful read.",15,2.7
+42,78,"Personal","Orwell's account of the Spanish Civil War is both personal and powerful.",3,1.8
+43,13,"Witty","Austen's exploration of love and society is both charming and witty.",27,4.7
+44,56,"Fun","Twain's tale of two boys switching lives is a fun and exciting read.",12,4.6
+45,89,"Insightful","Lee's memoir is a powerful exploration of her life and work.",8,4.7
+46,34,"Magical","Rowling's third book in the series is just as enchanting as the first two.",19,4.8
+47,1,"Heart-Wrenching","Hemingway's tale of war and love is deeply moving.",5,4.7
+48,67,"Tragic","Fitzgerald's exploration of love and ambition is a powerful read.",22,4.8
+49,10,"Classic","Dickens' tale of David Copperfield's life is a timeless classic.",1,4.7
+50,92,"Existential","Tolstoy's novella is a powerful exploration of life and death.",30,4.8
