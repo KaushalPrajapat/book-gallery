@@ -1,0 +1,2530 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API Documentation",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/job/start/a" : {
+      "post" : {
+        "summary" : "personJobLauncher",
+        "description" : "personJobLauncher",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job/start" : {
+      "post" : {
+        "summary" : "jobLauncher",
+        "description" : "jobLauncher",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book" : {
+      "get" : {
+        "summary" : "getAllBook",
+        "description" : "getAllBook",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book/count" : {
+      "get" : {
+        "summary" : "getCountOfBook",
+        "description" : "getCountOfBook",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/books" : {
+      "get" : {
+        "summary" : "getAllBook",
+        "description" : "getAllBook",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "nullable" : false
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "nullable" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book/{bookId}" : {
+      "get" : {
+        "summary" : "getABook",
+        "description" : "getABook",
+        "parameters" : [ {
+          "name" : "bookId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/author" : {
+      "post" : {
+        "summary" : "createAuthor",
+        "description" : "createAuthor",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "userId" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "firstName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "lastName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "gender" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "phone" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "dateOfBirth" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "jobTitle" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "books" : {
+                    "type" : "array",
+                    "description" : "",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bookId" : {
+                          "type" : "integer",
+                          "description" : "",
+                          "format" : "int64"
+                        },
+                        "author" : {
+                          "type" : "object",
+                          "properties" : {
+                            "id" : {
+                              "type" : "integer",
+                              "description" : "",
+                              "format" : "int64"
+                            },
+                            "userId" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "firstName" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "lastName" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "gender" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "email" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "phone" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "dateOfBirth" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "jobTitle" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "books" : {
+                              "type" : "array",
+                              "description" : "",
+                              "items" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "userId" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "firstName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "lastName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "gender" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "email" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "phone" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "dateOfBirth" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "jobTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "books" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : { }
+                                        }
+                                      },
+                                      "reviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookReviewId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "bookReviewTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReview" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviewRating" : {
+                                              "type" : "number",
+                                              "description" : ""
+                                            },
+                                            "book" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            }
+                                          },
+                                          "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  },
+                                  "bookTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookDescription" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviews" : {
+                                    "type" : "array",
+                                    "description" : "",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : {
+                                        "bookReviewId" : {
+                                          "type" : "integer",
+                                          "description" : "",
+                                          "format" : "int64"
+                                        },
+                                        "bookReviewTitle" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReview" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReviewRating" : {
+                                          "type" : "number",
+                                          "description" : ""
+                                        },
+                                        "book" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        },
+                                        "author" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "id" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "userId" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "firstName" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "lastName" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "gender" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "email" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "phone" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "dateOfBirth" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "jobTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "books" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : { }
+                                              }
+                                            },
+                                            "reviews" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : { }
+                                              }
+                                            }
+                                          },
+                                          "description" : ""
+                                        }
+                                      },
+                                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                    }
+                                  }
+                                },
+                                "description" : "com.crud.ops.crud_operations.models.Book"
+                              }
+                            },
+                            "reviews" : {
+                              "type" : "array",
+                              "description" : "",
+                              "items" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookReviewId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "bookReviewTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReview" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviewRating" : {
+                                    "type" : "number",
+                                    "description" : ""
+                                  },
+                                  "book" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "bookId" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "author" : {
+                                        "type" : "object",
+                                        "properties" : {
+                                          "id" : {
+                                            "type" : "integer",
+                                            "description" : "",
+                                            "format" : "int64"
+                                          },
+                                          "userId" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "firstName" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "lastName" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "gender" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "email" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "phone" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "dateOfBirth" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "jobTitle" : {
+                                            "type" : "string",
+                                            "description" : ""
+                                          },
+                                          "books" : {
+                                            "type" : "array",
+                                            "description" : "",
+                                            "items" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : "com.crud.ops.crud_operations.models.Book"
+                                            }
+                                          },
+                                          "reviews" : {
+                                            "type" : "array",
+                                            "description" : "",
+                                            "items" : {
+                                              "type" : "object",
+                                              "properties" : {
+                                                "bookReviewId" : {
+                                                  "type" : "integer",
+                                                  "description" : "",
+                                                  "format" : "int64"
+                                                },
+                                                "bookReviewTitle" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "bookReview" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "bookReviewRating" : {
+                                                  "type" : "number",
+                                                  "description" : ""
+                                                },
+                                                "book" : {
+                                                  "type" : "object",
+                                                  "properties" : { },
+                                                  "description" : ""
+                                                },
+                                                "author" : {
+                                                  "type" : "object",
+                                                  "properties" : { },
+                                                  "description" : ""
+                                                }
+                                              },
+                                              "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                            }
+                                          }
+                                        },
+                                        "description" : ""
+                                      },
+                                      "bookTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookDescription" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookReviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookReviewId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "bookReviewTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReview" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviewRating" : {
+                                              "type" : "number",
+                                              "description" : ""
+                                            },
+                                            "book" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : {
+                                                "id" : {
+                                                  "type" : "integer",
+                                                  "description" : "",
+                                                  "format" : "int64"
+                                                },
+                                                "userId" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "firstName" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "lastName" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "gender" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "email" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "phone" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "dateOfBirth" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "jobTitle" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "books" : {
+                                                  "type" : "array",
+                                                  "description" : "",
+                                                  "items" : {
+                                                    "type" : "object",
+                                                    "properties" : { },
+                                                    "description" : "com.crud.ops.crud_operations.models.Book"
+                                                  }
+                                                },
+                                                "reviews" : {
+                                                  "type" : "array",
+                                                  "description" : "",
+                                                  "items" : {
+                                                    "type" : "object",
+                                                    "properties" : { }
+                                                  }
+                                                }
+                                              },
+                                              "description" : ""
+                                            }
+                                          },
+                                          "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "userId" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "firstName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "lastName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "gender" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "email" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "phone" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "dateOfBirth" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "jobTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "books" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            },
+                                            "bookTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookDescription" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviews" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : {
+                                                  "bookReviewId" : {
+                                                    "type" : "integer",
+                                                    "description" : "",
+                                                    "format" : "int64"
+                                                  },
+                                                  "bookReviewTitle" : {
+                                                    "type" : "string",
+                                                    "description" : ""
+                                                  },
+                                                  "bookReview" : {
+                                                    "type" : "string",
+                                                    "description" : ""
+                                                  },
+                                                  "bookReviewRating" : {
+                                                    "type" : "number",
+                                                    "description" : ""
+                                                  },
+                                                  "book" : {
+                                                    "type" : "object",
+                                                    "properties" : { },
+                                                    "description" : ""
+                                                  },
+                                                  "author" : {
+                                                    "type" : "object",
+                                                    "properties" : { },
+                                                    "description" : ""
+                                                  }
+                                                },
+                                                "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                              }
+                                            }
+                                          },
+                                          "description" : "com.crud.ops.crud_operations.models.Book"
+                                        }
+                                      },
+                                      "reviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookReviewId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "bookReviewTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReview" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviewRating" : {
+                                              "type" : "number",
+                                              "description" : ""
+                                            },
+                                            "book" : {
+                                              "type" : "object",
+                                              "properties" : {
+                                                "bookId" : {
+                                                  "type" : "integer",
+                                                  "description" : "",
+                                                  "format" : "int64"
+                                                },
+                                                "author" : {
+                                                  "type" : "object",
+                                                  "properties" : { },
+                                                  "description" : ""
+                                                },
+                                                "bookTitle" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "bookDescription" : {
+                                                  "type" : "string",
+                                                  "description" : ""
+                                                },
+                                                "bookReviews" : {
+                                                  "type" : "array",
+                                                  "description" : "",
+                                                  "items" : {
+                                                    "type" : "object",
+                                                    "properties" : { }
+                                                  }
+                                                }
+                                              },
+                                              "description" : ""
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            }
+                                          },
+                                          "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  }
+                                },
+                                "description" : "com.crud.ops.crud_operations.models.BookReview"
+                              }
+                            }
+                          },
+                          "description" : ""
+                        },
+                        "bookTitle" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookDescription" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReviews" : {
+                          "type" : "array",
+                          "description" : "",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : {
+                              "bookReviewId" : {
+                                "type" : "integer",
+                                "description" : "",
+                                "format" : "int64"
+                              },
+                              "bookReviewTitle" : {
+                                "type" : "string",
+                                "description" : ""
+                              },
+                              "bookReview" : {
+                                "type" : "string",
+                                "description" : ""
+                              },
+                              "bookReviewRating" : {
+                                "type" : "number",
+                                "description" : ""
+                              },
+                              "book" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "userId" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "firstName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "lastName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "gender" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "email" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "phone" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "dateOfBirth" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "jobTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "books" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : "com.crud.ops.crud_operations.models.Book"
+                                        }
+                                      },
+                                      "reviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookReviewId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "bookReviewTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReview" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviewRating" : {
+                                              "type" : "number",
+                                              "description" : ""
+                                            },
+                                            "book" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            }
+                                          },
+                                          "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  },
+                                  "bookTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookDescription" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviews" : {
+                                    "type" : "array",
+                                    "description" : "",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : {
+                                        "bookReviewId" : {
+                                          "type" : "integer",
+                                          "description" : "",
+                                          "format" : "int64"
+                                        },
+                                        "bookReviewTitle" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReview" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReviewRating" : {
+                                          "type" : "number",
+                                          "description" : ""
+                                        },
+                                        "book" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        },
+                                        "author" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "id" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "userId" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "firstName" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "lastName" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "gender" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "email" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "phone" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "dateOfBirth" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "jobTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "books" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : { },
+                                                "description" : "com.crud.ops.crud_operations.models.Book"
+                                              }
+                                            },
+                                            "reviews" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : { }
+                                              }
+                                            }
+                                          },
+                                          "description" : ""
+                                        }
+                                      },
+                                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                    }
+                                  }
+                                },
+                                "description" : ""
+                              },
+                              "author" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "id" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "userId" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "firstName" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "lastName" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "gender" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "email" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "phone" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "dateOfBirth" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "jobTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "books" : {
+                                    "type" : "array",
+                                    "description" : "",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : {
+                                        "bookId" : {
+                                          "type" : "integer",
+                                          "description" : "",
+                                          "format" : "int64"
+                                        },
+                                        "author" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        },
+                                        "bookTitle" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookDescription" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReviews" : {
+                                          "type" : "array",
+                                          "description" : "",
+                                          "items" : {
+                                            "type" : "object",
+                                            "properties" : {
+                                              "bookReviewId" : {
+                                                "type" : "integer",
+                                                "description" : "",
+                                                "format" : "int64"
+                                              },
+                                              "bookReviewTitle" : {
+                                                "type" : "string",
+                                                "description" : ""
+                                              },
+                                              "bookReview" : {
+                                                "type" : "string",
+                                                "description" : ""
+                                              },
+                                              "bookReviewRating" : {
+                                                "type" : "number",
+                                                "description" : ""
+                                              },
+                                              "book" : {
+                                                "type" : "object",
+                                                "properties" : { },
+                                                "description" : ""
+                                              },
+                                              "author" : {
+                                                "type" : "object",
+                                                "properties" : { },
+                                                "description" : ""
+                                              }
+                                            },
+                                            "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                          }
+                                        }
+                                      },
+                                      "description" : "com.crud.ops.crud_operations.models.Book"
+                                    }
+                                  },
+                                  "reviews" : {
+                                    "type" : "array",
+                                    "description" : "",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : {
+                                        "bookReviewId" : {
+                                          "type" : "integer",
+                                          "description" : "",
+                                          "format" : "int64"
+                                        },
+                                        "bookReviewTitle" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReview" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReviewRating" : {
+                                          "type" : "number",
+                                          "description" : ""
+                                        },
+                                        "book" : {
+                                          "type" : "object",
+                                          "properties" : {
+                                            "bookId" : {
+                                              "type" : "integer",
+                                              "description" : "",
+                                              "format" : "int64"
+                                            },
+                                            "author" : {
+                                              "type" : "object",
+                                              "properties" : { },
+                                              "description" : ""
+                                            },
+                                            "bookTitle" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookDescription" : {
+                                              "type" : "string",
+                                              "description" : ""
+                                            },
+                                            "bookReviews" : {
+                                              "type" : "array",
+                                              "description" : "",
+                                              "items" : {
+                                                "type" : "object",
+                                                "properties" : { }
+                                              }
+                                            }
+                                          },
+                                          "description" : ""
+                                        },
+                                        "author" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        }
+                                      },
+                                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                    }
+                                  }
+                                },
+                                "description" : ""
+                              }
+                            },
+                            "description" : "com.crud.ops.crud_operations.models.BookReview"
+                          }
+                        }
+                      },
+                      "description" : "com.crud.ops.crud_operations.models.Book"
+                    }
+                  },
+                  "reviews" : {
+                    "type" : "array",
+                    "description" : "",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bookReviewId" : {
+                          "type" : "integer",
+                          "description" : "",
+                          "format" : "int64"
+                        },
+                        "bookReviewTitle" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReview" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReviewRating" : {
+                          "type" : "number",
+                          "description" : ""
+                        },
+                        "book" : {
+                          "type" : "object",
+                          "properties" : {
+                            "bookId" : {
+                              "type" : "integer",
+                              "description" : "",
+                              "format" : "int64"
+                            },
+                            "author" : {
+                              "type" : "object",
+                              "properties" : {
+                                "id" : {
+                                  "type" : "integer",
+                                  "description" : "",
+                                  "format" : "int64"
+                                },
+                                "userId" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "firstName" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "lastName" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "gender" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "email" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "phone" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "dateOfBirth" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "jobTitle" : {
+                                  "type" : "string",
+                                  "description" : ""
+                                },
+                                "books" : {
+                                  "type" : "array",
+                                  "description" : "",
+                                  "items" : {
+                                    "type" : "object",
+                                    "properties" : { },
+                                    "description" : "com.crud.ops.crud_operations.models.Book"
+                                  }
+                                },
+                                "reviews" : {
+                                  "type" : "array",
+                                  "description" : "",
+                                  "items" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "bookReviewId" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "bookReviewTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookReview" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookReviewRating" : {
+                                        "type" : "number",
+                                        "description" : ""
+                                      },
+                                      "book" : {
+                                        "type" : "object",
+                                        "properties" : { },
+                                        "description" : ""
+                                      },
+                                      "author" : {
+                                        "type" : "object",
+                                        "properties" : { },
+                                        "description" : ""
+                                      }
+                                    },
+                                    "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                  }
+                                }
+                              },
+                              "description" : ""
+                            },
+                            "bookTitle" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "bookDescription" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "bookReviews" : {
+                              "type" : "array",
+                              "description" : "",
+                              "items" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookReviewId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "bookReviewTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReview" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviewRating" : {
+                                    "type" : "number",
+                                    "description" : ""
+                                  },
+                                  "book" : {
+                                    "type" : "object",
+                                    "properties" : { },
+                                    "description" : ""
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "userId" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "firstName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "lastName" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "gender" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "email" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "phone" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "dateOfBirth" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "jobTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "books" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : "com.crud.ops.crud_operations.models.Book"
+                                        }
+                                      },
+                                      "reviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : { }
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  }
+                                },
+                                "description" : "com.crud.ops.crud_operations.models.BookReview"
+                              }
+                            }
+                          },
+                          "description" : ""
+                        },
+                        "author" : {
+                          "type" : "object",
+                          "properties" : {
+                            "id" : {
+                              "type" : "integer",
+                              "description" : "",
+                              "format" : "int64"
+                            },
+                            "userId" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "firstName" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "lastName" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "gender" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "email" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "phone" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "dateOfBirth" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "jobTitle" : {
+                              "type" : "string",
+                              "description" : ""
+                            },
+                            "books" : {
+                              "type" : "array",
+                              "description" : "",
+                              "items" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : { },
+                                    "description" : ""
+                                  },
+                                  "bookTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookDescription" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviews" : {
+                                    "type" : "array",
+                                    "description" : "",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : {
+                                        "bookReviewId" : {
+                                          "type" : "integer",
+                                          "description" : "",
+                                          "format" : "int64"
+                                        },
+                                        "bookReviewTitle" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReview" : {
+                                          "type" : "string",
+                                          "description" : ""
+                                        },
+                                        "bookReviewRating" : {
+                                          "type" : "number",
+                                          "description" : ""
+                                        },
+                                        "book" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        },
+                                        "author" : {
+                                          "type" : "object",
+                                          "properties" : { },
+                                          "description" : ""
+                                        }
+                                      },
+                                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                                    }
+                                  }
+                                },
+                                "description" : "com.crud.ops.crud_operations.models.Book"
+                              }
+                            },
+                            "reviews" : {
+                              "type" : "array",
+                              "description" : "",
+                              "items" : {
+                                "type" : "object",
+                                "properties" : {
+                                  "bookReviewId" : {
+                                    "type" : "integer",
+                                    "description" : "",
+                                    "format" : "int64"
+                                  },
+                                  "bookReviewTitle" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReview" : {
+                                    "type" : "string",
+                                    "description" : ""
+                                  },
+                                  "bookReviewRating" : {
+                                    "type" : "number",
+                                    "description" : ""
+                                  },
+                                  "book" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                      "bookId" : {
+                                        "type" : "integer",
+                                        "description" : "",
+                                        "format" : "int64"
+                                      },
+                                      "author" : {
+                                        "type" : "object",
+                                        "properties" : { },
+                                        "description" : ""
+                                      },
+                                      "bookTitle" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookDescription" : {
+                                        "type" : "string",
+                                        "description" : ""
+                                      },
+                                      "bookReviews" : {
+                                        "type" : "array",
+                                        "description" : "",
+                                        "items" : {
+                                          "type" : "object",
+                                          "properties" : { }
+                                        }
+                                      }
+                                    },
+                                    "description" : ""
+                                  },
+                                  "author" : {
+                                    "type" : "object",
+                                    "properties" : { },
+                                    "description" : ""
+                                  }
+                                },
+                                "description" : "com.crud.ops.crud_operations.models.BookReview"
+                              }
+                            }
+                          },
+                          "description" : ""
+                        }
+                      },
+                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                    }
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/author/count" : {
+      "get" : {
+        "summary" : "getCountOfAuthor",
+        "description" : "getCountOfAuthor",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/author/review/{userId}" : {
+      "get" : {
+        "summary" : "getReviewOfAuthor",
+        "description" : "getReviewOfAuthor",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/author/{authorId}" : {
+      "get" : {
+        "summary" : "getAAuthor",
+        "description" : "getAAuthor",
+        "parameters" : [ {
+          "name" : "authorId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/user/{userId}" : {
+      "get" : {
+        "summary" : "getAAuthorByUserId",
+        "description" : "getAAuthorByUserId",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/author/{authorId}/book" : {
+      "get" : {
+        "summary" : "getAllBookOfAuthor",
+        "description" : "getAllBookOfAuthor",
+        "parameters" : [ {
+          "name" : "authorId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book/reviews/{bookId}" : {
+      "get" : {
+        "summary" : "getReviewsOfABook",
+        "description" : "getReviewsOfABook",
+        "parameters" : [ {
+          "name" : "bookId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book/author/{bookId}" : {
+      "get" : {
+        "summary" : "getAuthorOfABook",
+        "description" : "getAuthorOfABook",
+        "parameters" : [ {
+          "name" : "bookId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/book-review" : {
+      "post" : {
+        "summary" : "createABookReview",
+        "description" : "createABookReview",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "bookReviewId" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "bookReviewTitle" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "bookReview" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "bookReviewRating" : {
+                    "type" : "number",
+                    "description" : ""
+                  },
+                  "bookReviewAuthor" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "book" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "com.crud.ops.crud_operations.models.Book" : {
+        "type" : "object",
+        "properties" : {
+          "bookId" : {
+            "type" : "integer",
+            "description" : "",
+            "format" : "int64"
+          },
+          "author" : {
+            "type" : "object",
+            "properties" : { },
+            "description" : ""
+          },
+          "bookTitle" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "bookDescription" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "bookReviews" : {
+            "type" : "array",
+            "description" : "",
+            "items" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          }
+        },
+        "description" : ""
+      },
+      "com.crud.ops.crud_operations.models.Author" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "",
+            "format" : "int64"
+          },
+          "userId" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "firstName" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "lastName" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "gender" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "email" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "phone" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "dateOfBirth" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "jobTitle" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "books" : {
+            "type" : "array",
+            "description" : "",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "bookId" : {
+                  "type" : "integer",
+                  "description" : "",
+                  "format" : "int64"
+                },
+                "author" : {
+                  "type" : "object",
+                  "properties" : { },
+                  "description" : ""
+                },
+                "bookTitle" : {
+                  "type" : "string",
+                  "description" : ""
+                },
+                "bookDescription" : {
+                  "type" : "string",
+                  "description" : ""
+                },
+                "bookReviews" : {
+                  "type" : "array",
+                  "description" : "",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "bookReviewId" : {
+                        "type" : "integer",
+                        "description" : "",
+                        "format" : "int64"
+                      },
+                      "bookReviewTitle" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "bookReview" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "bookReviewRating" : {
+                        "type" : "number",
+                        "description" : ""
+                      },
+                      "book" : {
+                        "type" : "object",
+                        "properties" : { },
+                        "description" : ""
+                      },
+                      "author" : {
+                        "type" : "object",
+                        "properties" : { },
+                        "description" : ""
+                      }
+                    },
+                    "description" : "com.crud.ops.crud_operations.models.BookReview"
+                  }
+                }
+              },
+              "description" : "com.crud.ops.crud_operations.models.Book"
+            }
+          },
+          "reviews" : {
+            "type" : "array",
+            "description" : "",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "bookReviewId" : {
+                  "type" : "integer",
+                  "description" : "",
+                  "format" : "int64"
+                },
+                "bookReviewTitle" : {
+                  "type" : "string",
+                  "description" : ""
+                },
+                "bookReview" : {
+                  "type" : "string",
+                  "description" : ""
+                },
+                "bookReviewRating" : {
+                  "type" : "number",
+                  "description" : ""
+                },
+                "book" : {
+                  "type" : "object",
+                  "properties" : {
+                    "bookId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "author" : {
+                      "type" : "object",
+                      "properties" : { },
+                      "description" : ""
+                    },
+                    "bookTitle" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookDescription" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReviews" : {
+                      "type" : "array",
+                      "description" : "",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : { }
+                      }
+                    }
+                  },
+                  "description" : ""
+                },
+                "author" : {
+                  "type" : "object",
+                  "properties" : { },
+                  "description" : ""
+                }
+              },
+              "description" : "com.crud.ops.crud_operations.models.BookReview"
+            }
+          }
+        },
+        "description" : ""
+      },
+      "com.crud.ops.crud_operations.models.BookReview" : {
+        "type" : "object",
+        "properties" : {
+          "bookReviewId" : {
+            "type" : "integer",
+            "description" : "",
+            "format" : "int64"
+          },
+          "bookReviewTitle" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "bookReview" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "bookReviewRating" : {
+            "type" : "number",
+            "description" : ""
+          },
+          "book" : {
+            "type" : "object",
+            "properties" : {
+              "bookId" : {
+                "type" : "integer",
+                "description" : "",
+                "format" : "int64"
+              },
+              "author" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "userId" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "firstName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "lastName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "gender" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "phone" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "dateOfBirth" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "jobTitle" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "books" : {
+                    "type" : "array",
+                    "description" : "",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : { },
+                      "description" : "com.crud.ops.crud_operations.models.Book"
+                    }
+                  },
+                  "reviews" : {
+                    "type" : "array",
+                    "description" : "",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bookReviewId" : {
+                          "type" : "integer",
+                          "description" : "",
+                          "format" : "int64"
+                        },
+                        "bookReviewTitle" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReview" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReviewRating" : {
+                          "type" : "number",
+                          "description" : ""
+                        },
+                        "book" : {
+                          "type" : "object",
+                          "properties" : { },
+                          "description" : ""
+                        },
+                        "author" : {
+                          "type" : "object",
+                          "properties" : { },
+                          "description" : ""
+                        }
+                      },
+                      "description" : "com.crud.ops.crud_operations.models.BookReview"
+                    }
+                  }
+                },
+                "description" : ""
+              },
+              "bookTitle" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "bookDescription" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "bookReviews" : {
+                "type" : "array",
+                "description" : "",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "bookReviewId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "bookReviewTitle" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReview" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReviewRating" : {
+                      "type" : "number",
+                      "description" : ""
+                    },
+                    "book" : {
+                      "type" : "object",
+                      "properties" : { },
+                      "description" : ""
+                    },
+                    "author" : {
+                      "type" : "object",
+                      "properties" : {
+                        "id" : {
+                          "type" : "integer",
+                          "description" : "",
+                          "format" : "int64"
+                        },
+                        "userId" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "firstName" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "lastName" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "gender" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "email" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "phone" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "dateOfBirth" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "jobTitle" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "books" : {
+                          "type" : "array",
+                          "description" : "",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { },
+                            "description" : "com.crud.ops.crud_operations.models.Book"
+                          }
+                        },
+                        "reviews" : {
+                          "type" : "array",
+                          "description" : "",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      },
+                      "description" : ""
+                    }
+                  },
+                  "description" : "com.crud.ops.crud_operations.models.BookReview"
+                }
+              }
+            },
+            "description" : ""
+          },
+          "author" : {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer",
+                "description" : "",
+                "format" : "int64"
+              },
+              "userId" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "firstName" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "lastName" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "gender" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "email" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "phone" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "dateOfBirth" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "jobTitle" : {
+                "type" : "string",
+                "description" : ""
+              },
+              "books" : {
+                "type" : "array",
+                "description" : "",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "bookId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "author" : {
+                      "type" : "object",
+                      "properties" : { },
+                      "description" : ""
+                    },
+                    "bookTitle" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookDescription" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReviews" : {
+                      "type" : "array",
+                      "description" : "",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "bookReviewId" : {
+                            "type" : "integer",
+                            "description" : "",
+                            "format" : "int64"
+                          },
+                          "bookReviewTitle" : {
+                            "type" : "string",
+                            "description" : ""
+                          },
+                          "bookReview" : {
+                            "type" : "string",
+                            "description" : ""
+                          },
+                          "bookReviewRating" : {
+                            "type" : "number",
+                            "description" : ""
+                          },
+                          "book" : {
+                            "type" : "object",
+                            "properties" : { },
+                            "description" : ""
+                          },
+                          "author" : {
+                            "type" : "object",
+                            "properties" : { },
+                            "description" : ""
+                          }
+                        },
+                        "description" : "com.crud.ops.crud_operations.models.BookReview"
+                      }
+                    }
+                  },
+                  "description" : "com.crud.ops.crud_operations.models.Book"
+                }
+              },
+              "reviews" : {
+                "type" : "array",
+                "description" : "",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "bookReviewId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "bookReviewTitle" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReview" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "bookReviewRating" : {
+                      "type" : "number",
+                      "description" : ""
+                    },
+                    "book" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bookId" : {
+                          "type" : "integer",
+                          "description" : "",
+                          "format" : "int64"
+                        },
+                        "author" : {
+                          "type" : "object",
+                          "properties" : { },
+                          "description" : ""
+                        },
+                        "bookTitle" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookDescription" : {
+                          "type" : "string",
+                          "description" : ""
+                        },
+                        "bookReviews" : {
+                          "type" : "array",
+                          "description" : "",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      },
+                      "description" : ""
+                    },
+                    "author" : {
+                      "type" : "object",
+                      "properties" : { },
+                      "description" : ""
+                    }
+                  },
+                  "description" : "com.crud.ops.crud_operations.models.BookReview"
+                }
+              }
+            },
+            "description" : ""
+          }
+        },
+        "description" : "com.crud.ops.crud_operations.models.BookReview"
+      }
+    }
+  }
+}
