@@ -1,0 +1,19 @@
+.dialog-container {
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.review-item {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+:host ::ng-deep .mat-mdc-dialog-container {
+  padding: 0 !important;
+}
