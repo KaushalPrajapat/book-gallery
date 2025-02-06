@@ -6,11 +6,11 @@ import { AuthorService } from '../../../services/author.service';
 import { MatIcon } from '@angular/material/icon';
 import { BookReview } from '../../../models/bookReview.model';
 import { BookService } from '../../../services/book.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-author',
   standalone: true,
-  imports: [MatProgressSpinnerModule, RouterLink, CommonModule],
+  imports: [MatProgressSpinnerModule, RouterLink, CommonModule, DatePipe],
   templateUrl: './author.component.html',
   styleUrl: './author.component.scss',
 })

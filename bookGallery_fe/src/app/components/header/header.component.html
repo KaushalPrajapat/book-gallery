@@ -1,28 +1,61 @@
-<header class="bg-white border-b">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
-      <div class="flex items-center">
-        <a routerLink="/" class="text-xl font-bold text-gray-900">
-          BookGallery
-        </a>
-      </div>
-      <a href="sr.zip">fu</a>
-      <nav class="hidden md:flex space-x-4 text-gray-400">
-        <a routerLink="/books" routerLinkActive="text-blue-600" class="text-gray-500 hover:text-gray-900" (click)="openCreateUserDialog()">Register</a>
-        <a routerLink="/books/create-book" routerLinkActive="text-blue-600" class="text-gray-500 hover:text-gray-900">Add Book</a>
-        <a routerLink="/books" routerLinkActive="text-blue-600" class="text-gray-500 hover:text-gray-900">Books</a>
-        <a routerLink="/authors" routerLinkActive="text-blue-600" class="text-gray-500 hover:text-gray-900">Authors</a>
-        <a routerLink="/" routerLinkActive="text-blue-600" [routerLinkActiveOptions]="{exact: true}" class="text-gray-500 hover:text-gray-900">Home</a>
-      </nav>
-      <div class="md:hidden">
-        <!-- Mobile menu button -->
-        <button type="button" class="text-gray-500 hover:text-gray-600">
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
+<header class="bg-white shadow-md">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold text-gray-800">Book Gallery</a>
+    <nav>
+      <ul class="flex space-x-4">
+        <li><a href="/" class="text-gray-600 hover:text-gray-800">Home</a></li>
+        <li>
+          <a href="/books" class="text-gray-600 hover:text-gray-800">Books</a>
+        </li>
+        <li>
+          <a href="/authors" class="text-gray-600 hover:text-gray-800"
+            >Authors</a
+          >
+        </li>
+        @if (isSignedIn) {
+        <ng-container>
+          <li>
+            @if (!isLoading) {
+            <button
+              (click)="navigateToProfile()"
+              class="text-gray-600 hover:text-gray-800"
+            >
+              {{ authorName || "userName" }}
+            </button>
+            } @if (isLoading) {
+            <p class="text-gray-600 hover:text-gray-800">Loading....</p>
+            }
+          </li>
+          <li>
+            <button
+              (click)="signOut()"
+              class="text-gray-600 hover:text-red-400"
+            >
+              Sign Out
+            </button>
+          </li>
+        </ng-container>
+        } @if (notSignedIn) {
+        <ng-container>
+          <li>
+            <button
+              (click)="openSigninDialog()"
+              class="text-gray-600 hover:text-green-500"
+            >
+              Sign In
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="openCreateUserDialog()"
+              class="text-gray-600 hover:text-red-500"
+            >
+              Sign Up
+            </button>
+          </li>
+        </ng-container>
+        }
+      </ul>
+    </nav>
   </div>
 </header>

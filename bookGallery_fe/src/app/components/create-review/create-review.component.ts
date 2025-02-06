@@ -27,10 +27,6 @@ export class CreateReviewComponent {
   stars: number[] = [1, 2, 3, 4, 5];
   selectedRating = 0;
   hoveredRating = 0;
-  authorId: number | null = null;
-  authorName = '';
-  isUserNameValid: boolean = false;
-  userName: string = '';
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -41,7 +37,6 @@ export class CreateReviewComponent {
     private toaster: ToastrService
   ) {
     this.reviewForm = this.fb.group({
-      userName: ['', Validators.required],
       bookReviewTitle: ['', Validators.required],
       bookReview: ['', Validators.required],
       bookReviewRating: [
@@ -56,87 +51,33 @@ export class CreateReviewComponent {
   }
 
   onSubmit() {
-    if (this.reviewForm.valid && this.authorId) {
+    if (this.reviewForm.valid) {
       const reviewData = {
         ...this.reviewForm.value,
         book: this.bookId,
-        bookReviewAuthor: this.authorId,
       };
       console.log(reviewData);
 
       this.bookService.addBookReview(reviewData).subscribe(
         () => {
           this.toaster.success(
-            'Book Review by ' + this.userName + ' added successfully',
+            'Book Review added successfully',
             'review added'
           );
           this.reviewForm.reset({
-            authorName: this.authorName,
             bookReviewTitle: '',
             bookReview: '',
             bookReviewRating: 0,
-            userName: '',
           });
-          // this.router.navigate(['/full-book', this.bookId]);
         },
         (error) => {
           this.toaster.error(
-            'Book Review by ' + this.userName + ' failed' + error.error.message,
+            'Book Review add failed' + error.error.message,
             'review add failed'
           );
         }
       );
     }
-  }
-
-  validateUsername() {
-    const userId: string =
-      this.reviewForm.get('userName')?.value != null
-        ? this.reviewForm.get('userName')?.value
-        : this.authorId;
-    console.log(userId);
-    this.authorId = null;
-    this.isUserNameValid = false;
-    if (userId) {
-      this.userService.validateUser(userId).subscribe(
-        (response) => {
-          this.toaster.success(
-            'Author is validated : ' + this.authorName,
-            'Author validate'
-          );
-          if (response) {
-            this.authorId = response.id;
-            this.authorName = response.name;
-            this.isUserNameValid = false;
-          }
-        },
-        (error) => {
-          this.isUserNameValid = true;
-          this.toaster.error(
-            'Author is invalid ' + this.authorName + error.error.message,
-            'Author invalid'
-          );
-        }
-      );
-    }
-  }
-
-  openCreateUserDialog() {
-    const dialogRef = this.dialog.open(CreateUserDialogComponent, {
-      width: '500px',
-      data: { userName: this.reviewForm.get('userName')?.value },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.authorId = result.id;
-        this.authorName = result.name;
-        this.userName = result.userName.value;
-        this.isUserNameValid = true;
-        this.validateUsername();
-        this.reviewForm.patchValue({ userName: result.name });
-      }
-    });
   }
 
   getStarArray(rating: number): number[] {

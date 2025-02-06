@@ -1,0 +1,51 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0 bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white flex items-center justify-center">
+        <div class="text-center">
+          <div class="text-6xl mb-2">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h2 class="text-2xl font-semibold" *ngIf="author as profile">{{ profile?.name }}</h2>
+        </div>
+      </div>
+      <div class="p-8 flex-grow">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">User Profile</h1>
+        <div *ngIf="author as profile">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-gray-600 mb-2">User ID</p>
+              <p class="font-semibold text-gray-800">{{ profile.userId }}</p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-2">Job Title</p>
+              <p class="font-semibold text-gray-800">{{ profile.jobTitle }}</p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-2">Email</p>
+              <p class="font-semibold text-gray-800">{{ profile.email }}</p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-2">Phone</p>
+              <p class="font-semibold text-gray-800">{{ profile.phone }}</p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-2">Gender</p>
+              <p class="font-semibold text-gray-800">{{ profile.gender }}</p>
+            </div>
+            <div>
+              <p class="text-gray-600 mb-2">Age</p>
+              <p class="font-semibold text-gray-800">{{ getAgeFromDateOfBirth(profile.dateOfBirth) }} years old</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-100 px-8 py-4">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out" [routerLink]="['/books/create-book']" routerLinkActive="router-link-active" >
+        Add new Book
+      </button>
+    </div>
+  </div>
+</div>
+

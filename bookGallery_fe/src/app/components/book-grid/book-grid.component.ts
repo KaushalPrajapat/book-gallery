@@ -21,19 +21,14 @@ export class BookGridComponent {
   totalBooks = 0;
   totalPages = 0;
 
-// Method to calculate page size based on screen dimensions
-calculatePageSize() {
-  const blockWidth = 300;
-  
-  const screenWidth = window.innerWidth;
-
-  const columns = Math.floor(screenWidth / blockWidth);
-
-  this.pageSize = 3 * columns;
-
-  console.log(`Calculated pageSize: ${this.pageSize}`);
-}
-
+  // Method to calculate page size based on screen dimensions
+  calculatePageSize() {
+    const blockWidth = 300;
+    const screenWidth = window.innerWidth;
+    const columns = Math.floor(screenWidth / blockWidth);
+    this.pageSize = 3 * columns;
+    console.log(`Calculated pageSize: ${this.pageSize}`);
+  }
 
   constructor(
     private bookService: BookService,
@@ -43,7 +38,7 @@ calculatePageSize() {
     const state = this.paginationStateService.getBookGridState();
     this.currentPage = state.page;
     this.pageSize = state.pageSize;
-    this.calculatePageSize()
+    this.calculatePageSize();
   }
   ngOnInit(): void {
     this.fetchBooks();
@@ -54,7 +49,6 @@ calculatePageSize() {
 
   fetchBooks() {
     console.log('pageNumber ' + this.currentPage);
-
     this.bookService
       .getAllBooks(this.currentPage - 1, this.pageSize)
       .subscribe((data) => {

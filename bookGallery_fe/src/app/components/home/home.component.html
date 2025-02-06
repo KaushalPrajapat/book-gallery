@@ -1,0 +1,86 @@
+<div class="bg-gradient-to-b from-blue-100 to-white min-h-screen">
+  <!-- Hero Section -->
+  <section class="container mx-auto px-4 py-20 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+      Welcome to BookGallery
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-600 mb-10">
+      Discover, review, and connect through the world of books
+    </p>
+    <a
+      href="#"
+      class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105"
+    >
+      Get Started
+    </a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-4">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+      >
+        What You Can Do
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        @for (feature of features; track $index) {
+        <div
+          class="bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+        >
+          <i [class]="feature.icon + ' text-4xl text-blue-600 mb-4'"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">
+            {{ feature.title }}
+          </h3>
+          <p class="text-gray-600">{{ feature.description }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+      >
+        How It Works
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        @for (step of howItWorks; track $index) {
+        <div class="text-center">
+          <div
+            class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4"
+          >
+            {{ step.step }}
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">
+            {{ step.title }}
+          </h3>
+          <p class="text-gray-600">{{ step.description }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-blue-500 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Start Your Reading Journey?
+      </h2>
+      <p class="text-xl mb-10">
+        Join our community of book lovers today and unlock a world of literary
+        adventures.
+      </p>
+      <a
+        href="#"
+        class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-lime-100 transition hover:text-cyan-600 duration-300 ease-in-out transform hover:scale-125"
+      >
+        Sign Up Now
+      </a>
+    </div>
+  </section>
+</div>

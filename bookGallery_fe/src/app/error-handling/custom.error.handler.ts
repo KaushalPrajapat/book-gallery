@@ -14,7 +14,6 @@ constructor(private toastService: ToastService){}
 
   static handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred';
-    debugger
     if (error.error instanceof ErrorEvent) {
       // Client-side error
       errorMessage = `Error: ${error.error.message}`;

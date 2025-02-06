@@ -7,7 +7,7 @@
   <div class="space-y-3">
     @if (getSizeOfReviews() == 0) {
     <h3 class="text-red-500 text-center text-md font-medium mb-2">
-      No Review for the Book  
+      No Review for the Book
     </h3>
     }
     @for (review of data.book.reviews; track review.bookReviewId) {
@@ -48,11 +48,11 @@
           <button
             (click)="closeDialog()"
             mat-button
-            [routerLink]="['/author', data.book.author.id]"
+            [routerLink]="['/author', review.author.id]"
             routerLinkActive="router-link-active"
             class="py-2 hover:bg-gray-50 transition-colors"
           >
-            {{ data.book.author.name }}
+            {{ review.author.name }}
           </button>
         </p>
       </div>

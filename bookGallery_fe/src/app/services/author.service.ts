@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Author } from '../models/author.model';
 import { baseUrl } from '../info/VARIABLES';
@@ -13,7 +13,17 @@ export class AuthorService {
   constructor(private http: HttpClient) {}
 
   getAuthorByUserId(authorId: string): Observable<Author> {
-    return this.http.get<Author>(`${this.apiUrl}/author/${authorId}`);
+    console.log(localStorage.getItem('accessToken'));
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('accessToken') || ''
+    );
+
+
+    console.log(headers);
+    return this.http.get<Author>(`${this.apiUrl}/author/${authorId}`, {
+      headers: headers,
+    });
   }
   getAuthors(pageSize: number, page: number): Observable<Author[]> {
     console.log(pageSize, page);
