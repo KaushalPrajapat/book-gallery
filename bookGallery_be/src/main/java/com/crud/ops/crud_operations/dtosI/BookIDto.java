@@ -17,7 +17,6 @@ import java.util.List;
 @Builder
 public class BookIDto {
     private Long bookId;
-    private Long authorId;
     private String bookTitle;
     private String bookDescription;
 }

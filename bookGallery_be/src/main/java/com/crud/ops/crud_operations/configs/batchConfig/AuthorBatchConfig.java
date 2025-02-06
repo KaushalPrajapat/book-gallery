@@ -29,6 +29,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 
 
@@ -46,6 +48,8 @@ public class AuthorBatchConfig {
     @Autowired
     private JobCompletionNotificationListener listener;
 
+    PasswordEncoder passwordEncoder =  new BCryptPasswordEncoder();
+
     @Bean
     public FlatFileItemReader<Author> authorReader() {
         return new FlatFileItemReaderBuilder<Author>()
@@ -62,7 +66,7 @@ public class AuthorBatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("id", "userId", "firstName", "lastName", "gender", "email", "phone", "dateOfBirth", "jobTitle");
+        lineTokenizer.setNames("id", "userId", "firstName", "lastName", "gender", "email", "phone", "dateOfBirth", "jobTitle","role","password");
         BeanWrapperFieldSetMapper<Author> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Author.class);
         lineMapper.setLineTokenizer(lineTokenizer);
@@ -73,6 +77,7 @@ public class AuthorBatchConfig {
     @Bean
     public ItemProcessor<Author, Author> authorProcessor() {
         return author -> {
+            author.setPassword(passwordEncoder.encode(author.getPassword()));
             return author;
         };
     }
@@ -119,21 +124,6 @@ public class AuthorBatchConfig {
     }
 
 
-//    @Bean
-//    public FlatFileItemReader<Book4BatchDto> bookReader() {
-//        FlatFileItemReader<Book4BatchDto> reader = new FlatFileItemReader<>();
-//        reader.setResource(new ClassPathResource("book.csv"));
-//        reader.setLineMapper(new DefaultLineMapper<Book4BatchDto>() {{
-//            setLineTokenizer(new DelimitedLineTokenizer() {{
-//                setNames("bookId", "authorId", "bookTitle", "bookDescription");
-//            }});
-//            setFieldSetMapper(new BeanWrapperFieldSetMapper<Book4BatchDto>() {{
-//                setTargetType(Book4BatchDto.class);
-//            }});
-//        }});
-//        return reader;
-//    }
-
     @Bean
     public FlatFileItemReader<Book4BatchDto> bookReader() {
         return new FlatFileItemReaderBuilder<Book4BatchDto>()
@@ -150,7 +140,7 @@ public class AuthorBatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("bookId", "authorId", "bookTitle", "bookDescription");
+        lineTokenizer.setNames("bookId", "authorId", "bookTitle", "bookDescription","image");
         BeanWrapperFieldSetMapper<Book4BatchDto> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Book4BatchDto.class);
         lineMapper.setLineTokenizer(lineTokenizer);
@@ -174,7 +164,8 @@ public class AuthorBatchConfig {
                         book.getBookId(),
                         book.getBookTitle(),
                         book.getBookDescription(),
-                        book.getAuthor()
+                        book.getAuthor(),
+                        book.getImage()
                 );
             }
         };
@@ -223,7 +214,6 @@ public class AuthorBatchConfig {
     @Bean
     public ItemProcessor<BookReviewIDto, BookReviewIDto> bookReviewProcessor() {
         return bookReview -> {
-
             return bookReview;
         };
     }

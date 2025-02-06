@@ -18,15 +18,15 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
             " VALUES (:id, :userId, :firstName, :lastName, :gender, :email, :phone, :dateOfBirth, :jobTitle)", nativeQuery = true)
     void saveAuthor(Long id, String userId, String firstName, String lastName, String gender, String email, String phone, String dateOfBirth, String jobTitle);
 
-    @Transactional
-    @Query(value = "Select id from crud_author where email = :email", nativeQuery = true)
-    Optional<Long> findByEmail(String email);
 
-    Optional<Author> findFirst1ByFirstNameAndLastName(String firstName, String lastName);
+    Optional<Author> findFirstByEmail(String email);
 
-    Optional<Author> findFirst1ByFirstName(String firstName);
+    Optional<Author> findFirstByFirstNameAndLastName(String firstName, String lastName);
+
+    Optional<Author> findFirstByFirstName(String firstName);
 
     Optional<Author> findByUserId(String userId);
+
 
 
 //    @EntityGraph(attributePaths = {"books", "reviews"})

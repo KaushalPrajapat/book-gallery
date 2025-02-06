@@ -11,6 +11,8 @@ import com.crud.ops.crud_operations.repositories.BookReviewRepository;
 import com.crud.ops.crud_operations.services.AuthorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -32,10 +34,9 @@ public class AuthorServiceImpl implements AuthorService {
     public List<AuthorResponseODto> getAllAuthor(Pageable page) {
         Page<Author> authors = authorRepository.findAll(page);
         List<AuthorResponseODto> authorSmallODtoList = new ArrayList<>();
-        for (var author : authors){
+        for (var author : authors) {
             authorSmallODtoList.add(new AuthorResponseODto(author));
         }
-//        System.out.println(authors.getSize());
         return authorSmallODtoList;
     }
 
@@ -52,17 +53,14 @@ public class AuthorServiceImpl implements AuthorService {
         Author something = authorRepository.findById(authorId).orElseThrow(() ->
                 new CustomException("Author Not Found", "AUTHOR_NOT_FOUND", 404));
         something.setBooks(bookRepository.findAllByAuthor(something));
-//        System.out.println("Fetch reviews for books " + something.getBooks().size());
         List<BookReviewResponseODto> bookReviews = new ArrayList<>();
         for (var r : bookReviewRepository.findReviewsWithBook(something.getBooks()).stream().limit(2).toList()) {
             bookReviews.add(r);
         }
-//        System.out.println("Fetched reviews are : " + bookReviews.size());
         AuthorResponseODto authorResponseDto = new AuthorResponseODto(something);
         authorResponseDto.setReviews(bookReviews);
         return authorResponseDto;
     }
-
 
     @Override
     public AuthorSmallODto createAuthor(Author author) {
@@ -71,9 +69,15 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public String createAuthorUserName(Author author) {
+        Author authorSaved = authorRepository.save(author);
+        return authorSaved.getUsername();
+    }
+
+    @Override
     public Long getAuthorByEmail(String email) {
-        Long authorId = authorRepository.findByEmail(email).orElseThrow(() ->
-                new CustomException("Author with " + email + " doesn't exists", "EMAIL_NOT_EXISTS", 404));
+        Long authorId = authorRepository.findFirstByEmail(email).orElseThrow(() ->
+                new CustomException("Author with " + email + " doesn't exists", "EMAIL_NOT_EXISTS", 404)).getId();
         return authorId;
     }
 
@@ -96,8 +100,24 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorSmallODto getAAuthorByUserId(String userId) {
-        var user =  new AuthorSmallODto(authorRepository.findByUserId(userId).orElseThrow(() ->
+        var user = new AuthorSmallODto(authorRepository.findByUserId(userId).orElseThrow(() ->
                 new CustomException("User with " + userId + " doesn't exists", "USERID_NOT_EXISTS", 404)));
         return user;
     }
+
+    @Override
+    public Author findUserById(Long id) {
+        return authorRepository.findById(id).orElseThrow(() -> new CustomException("user doesn't exists", "USER_NOT_FOUND", 404));
+    }
+
+    @Override
+    public AuthorResponseODto getProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getAuthorities().toString().contains("ROLE_ANONYMOUS")) return null;
+        return new AuthorResponseODto(authorRepository.findByUserId(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found")));
+
+    }
+
+
 }

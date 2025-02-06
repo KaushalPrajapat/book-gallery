@@ -1,7 +1,11 @@
 package com.crud.ops.crud_operations.controllers;
 
 
+import com.crud.ops.crud_operations.dtosO.AuthorResponseODto;
+import com.crud.ops.crud_operations.dtosO.BookReviewResponseODto;
+import com.crud.ops.crud_operations.dtosO.smallO.AuthorSmallODto;
 import com.crud.ops.crud_operations.models.Author;
+import com.crud.ops.crud_operations.models.Book;
 import com.crud.ops.crud_operations.services.AuthorService;
 import com.crud.ops.crud_operations.services.BookReviewService;
 import com.crud.ops.crud_operations.services.BookService;
@@ -9,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -24,7 +30,8 @@ public class AuthorController {
         this.bookService = bookService;
         this.bookReviewService = bookReviewService;
     }
-    
+
+    @GetMapping("/author")
     public ResponseEntity<?> getAllAuthor(@RequestParam(name = "size") int count,
                                           @RequestParam(name = "page") int pageNumber) {
         Pageable page = PageRequest.of(pageNumber, count);
@@ -32,42 +39,39 @@ public class AuthorController {
         return ResponseEntity.ok(authorService.getAllAuthor(page));
     }
 
-    @GetMapping("/author")
-    public ResponseEntity<?> getAllBook(@RequestParam(name = "size", defaultValue = "10") int count,
-                                        @RequestParam(name = "page", defaultValue = "0") int pageNumber) {
-        Pageable page = PageRequest.of(pageNumber, count);
-
-        return ResponseEntity.ok(authorService.getAllAuthor(page));
-    }
-
-    @PostMapping("/author")
-    public ResponseEntity<?> createAuthor(@RequestBody Author author) {
-        return ResponseEntity.ok(authorService.createAuthor(author));
-    }
+//    @PostMapping("/create/author")
+//    public ResponseEntity<?> createAuthor(@RequestBody Author author) {
+//        return ResponseEntity.ok(authorService.createAuthor(author));
+//    }
 
     @GetMapping("/author/count")
-    public ResponseEntity<?> getCountOfAuthor() {
+    public ResponseEntity<Long> getCountOfAuthor() {
         return ResponseEntity.ok(authorService.getCountOfAuthor());
     }
 
     @GetMapping("/author/review/{userId}")
-    public ResponseEntity<?> getReviewOfAuthor(@PathVariable(name = "userId") Long userId) {
+    public ResponseEntity<List<BookReviewResponseODto>> getReviewOfAuthor(@PathVariable(name = "userId") Long userId) {
         return ResponseEntity.ok(authorService.getReviewOfAuthor(userId));
     }
 
     @GetMapping("/author/{authorId}")
-    public ResponseEntity<?> getAAuthor(@PathVariable Long authorId) {
+    public ResponseEntity<AuthorResponseODto> getAAuthor(@PathVariable Long authorId) {
         return ResponseEntity.ok(authorService.getAAuthor(authorId));
     }
 
+    @GetMapping("/author/profile")
+    public ResponseEntity<AuthorResponseODto> getProfile() {
+        return ResponseEntity.ok(authorService.getProfile());
+    }
+
     @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getAAuthorByUserId(@PathVariable String userId) {
+    public ResponseEntity<AuthorSmallODto> getAAuthorByUserId(@PathVariable String userId) {
         return ResponseEntity.ok(authorService.getAAuthorByUserId(userId));
 
     }
 
     @GetMapping("/author/{authorId}/book")
-    public ResponseEntity<?> getAllBookOfAuthor(@PathVariable Long authorId) {
+    public ResponseEntity<List<Book>> getAllBookOfAuthor(@PathVariable Long authorId) {
         return ResponseEntity.ok(authorService.findBookOfAuthor(authorId));
     }
 

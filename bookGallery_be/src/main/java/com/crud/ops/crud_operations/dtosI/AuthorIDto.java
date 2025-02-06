@@ -18,4 +18,5 @@ public class AuthorIDto {
     private String phone;
     private String dateOfBirth;
     private String jobTitle;
+    private String password;
 }

@@ -9,12 +9,12 @@ import com.crud.ops.crud_operations.models.BookReview;
 import com.crud.ops.crud_operations.repositories.AuthorRepository;
 import com.crud.ops.crud_operations.repositories.BookRepository;
 import com.crud.ops.crud_operations.repositories.BookReviewRepository;
+import com.crud.ops.crud_operations.services.AuthService;
 import com.crud.ops.crud_operations.services.BookReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class BookReviewServiceImpl implements BookReviewService {
@@ -22,19 +22,23 @@ public class BookReviewServiceImpl implements BookReviewService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
     private final BookReviewRepository bookReviewRepository;
+    private final AuthUtils authUtils;
 
-    public BookReviewServiceImpl(BookRepository bookRepository, AuthorRepository authorRepository, BookReviewRepository bookReviewRepository) {
+    public BookReviewServiceImpl(BookRepository bookRepository, AuthorRepository authorRepository,
+                                 BookReviewRepository bookReviewRepository, AuthService authService, AuthUtils authUtils) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.bookReviewRepository = bookReviewRepository;
+        this.authUtils = authUtils;
     }
 
     @Override
     public SuccessMessageDto createABookReview(BookReviewIDto bookReviewInput) {
+        Author writer = authUtils.getLoggedInUser();
         BookReview bookReview = new BookReview();
         BeanUtils.copyProperties(bookReviewInput, bookReview);
         Book book = getBookByBookId(bookReviewInput.getBook());
-        bookReview.setAuthor(getAuthorByAuthorId(bookReviewInput.getBookReviewAuthor()));
+        bookReview.setAuthor(writer);
         bookReview.setBook(book);
         BookReview savedReview = bookReviewRepository.save(bookReview);
         book.getBookReviews().add(savedReview);
@@ -43,7 +47,7 @@ public class BookReviewServiceImpl implements BookReviewService {
     }
 
     private Author getAuthorByFirstName(String firstName) {
-        return authorRepository.findFirst1ByFirstName(firstName).orElseGet(() -> {
+        return authorRepository.findFirstByFirstName(firstName).orElseGet(() -> {
             Author author = new Author();
             author.setFirstName(firstName);
             return authorRepository.save(author);
@@ -51,7 +55,7 @@ public class BookReviewServiceImpl implements BookReviewService {
     }
 
     private Author getAuthorByFullName(String firstName, String lastName) {
-        return authorRepository.findFirst1ByFirstNameAndLastName(firstName, lastName).orElseGet(() ->
+        return authorRepository.findFirstByFirstNameAndLastName(firstName, lastName).orElseGet(() ->
         {
             Author author = new Author();
             author.setFirstName(firstName);

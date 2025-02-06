@@ -29,4 +29,7 @@ public class Book {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
     private List<BookReview> bookReviews;
 
+    @Lob
+    private byte[] image;
+
 }

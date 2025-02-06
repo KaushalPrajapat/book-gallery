@@ -34,23 +34,23 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @PostMapping("/book")
+    @PostMapping("/create/book")
     public ResponseEntity<?> createABook(@RequestBody BookIDto bookIDto) {
         var res =bookService.createABook(bookIDto);
         return ResponseEntity.ok(res);
     }
 
-    @GetMapping("/book")
-    public ResponseEntity<?> getAllBook() {
-        return ResponseEntity.ok(bookService.getAllBook());
-    }
+//    @GetMapping("/book")
+//    public ResponseEntity<?> getAllBook() {
+//        return ResponseEntity.ok(bookService.getAllBook());
+//    }
 
     @GetMapping("/book/count")
     public ResponseEntity<?> getCountOfBook() {
         return ResponseEntity.ok(bookService.getCountOfBook());
     }
 
-    @GetMapping("/books")
+    @GetMapping("/book")
     public ResponseEntity<?> getAllBook(@RequestParam(name = "size") int count,
                                         @RequestParam(name = "page") int pageNumber) {
         Pageable page = PageRequest.of(pageNumber, count);

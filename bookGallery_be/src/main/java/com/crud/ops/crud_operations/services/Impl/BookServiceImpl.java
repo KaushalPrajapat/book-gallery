@@ -26,11 +26,14 @@ public class BookServiceImpl implements BookService {
     final private BookRepository bookRepository;
     final BookReviewRepository bookReviewRepository;
     final private AuthorRepository authorRepository;
+    private final AuthUtils authUtils;
 
-    public BookServiceImpl(BookRepository bookRepository, BookReviewRepository bookReviewRepository, AuthorRepository authorRepository) {
+    public BookServiceImpl(BookRepository bookRepository, BookReviewRepository bookReviewRepository,
+                           AuthorRepository authorRepository, AuthUtils authUtils) {
         this.bookRepository = bookRepository;
         this.bookReviewRepository = bookReviewRepository;
         this.authorRepository = authorRepository;
+        this.authUtils = authUtils;
     }
 
     @Override
@@ -72,7 +75,7 @@ public class BookServiceImpl implements BookService {
         var authorDto = new AuthorIDto();
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new CustomException("Book with given bookId : " + bookId + " doesn't exists", "BOOK_NOT_FOUND", 404));
         BeanUtils.copyProperties(authorRepository.findById(book.getAuthor().getId()).orElseThrow(() ->
-                new CustomException("user doesn;t exists", "USER_NOT_FOUND", 404)), authorDto);
+                new CustomException("user doesn't exists", "USER_NOT_FOUND", 404)), authorDto);
         return authorDto;
     }
 
@@ -84,9 +87,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public SuccessMessageDto createABook(BookIDto bookIDto) {
         Book book = new Book();
+        Author writer = authUtils.getLoggedInUser();
         book.setBookTitle(bookIDto.getBookTitle());
         book.setBookDescription(bookIDto.getBookDescription());
-        book.setAuthor(getAuthorByAuthorId(bookIDto.getAuthorId()));
+        book.setAuthor(writer);
         bookRepository.save(book);
         return SuccessMessageDto.builder().message("Book Saved SuccessFully")
                 .successCode(201).build();

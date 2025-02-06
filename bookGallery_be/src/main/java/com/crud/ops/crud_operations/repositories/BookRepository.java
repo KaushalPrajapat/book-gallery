@@ -17,10 +17,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO crud_book (book_id, book_title, book_description, author_id) " +
-            "VALUES (:bookId, :bookTitle, :bookDescription, :author) " +
+    @Query(value = "INSERT INTO crud_book (book_id, book_title, book_description, author_id, image) " +
+            "VALUES (:bookId, :bookTitle, :bookDescription, :author, :image) " +
             "ON DUPLICATE KEY UPDATE book_id = book_id;", nativeQuery = true)
-    void saveBook(Long bookId, String bookTitle, String bookDescription, Long author);
+    void saveBook(Long bookId, String bookTitle, String bookDescription, Long author, byte[] image);
 
 
     List<Book> findAllByAuthor(Author something);

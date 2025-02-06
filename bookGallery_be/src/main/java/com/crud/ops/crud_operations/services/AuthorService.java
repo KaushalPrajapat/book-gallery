@@ -19,9 +19,12 @@ public interface AuthorService {
      AuthorResponseODto getAAuthor(Long authorId);
 
 
-     AuthorSmallODto createAuthor(Author author);
 
 //     Find Author by Author name, or mailId
+
+     AuthorSmallODto createAuthor(Author author);
+
+     String createAuthorUserName(Author author);
 
      Long getAuthorByEmail(String email);
 
@@ -30,4 +33,9 @@ public interface AuthorService {
      List<BookReviewResponseODto> getReviewOfAuthor(Long userId);
 
      AuthorSmallODto getAAuthorByUserId(String userId);
+
+     Author findUserById(Long id);
+
+     AuthorResponseODto getProfile();
+
 }

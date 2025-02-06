@@ -32,7 +32,7 @@ public class BookReviewController {
         return ResponseEntity.ok(bookService.getAuthorOfABook(bookId));
     }
 
-    @PostMapping("/book-review")
+    @PostMapping("/create/book-review")
     public ResponseEntity<?> createABookReview(@RequestBody BookReviewIDto bookReviewInput) {
         return ResponseEntity.ok(bookReviewService.createABookReview(bookReviewInput));
     }
