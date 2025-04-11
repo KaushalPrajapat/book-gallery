@@ -27,3 +27,16 @@ export interface AuthorTemp {
   dateOfBirth: string;
   jobTitle: string;
 }
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  phone: string;
+  dateOfBirth: string;
+  jobTitle: string;
+  password: string;
+  confirmPassword: string;
+}
+

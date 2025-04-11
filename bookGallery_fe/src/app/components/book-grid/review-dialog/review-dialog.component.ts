@@ -23,6 +23,8 @@ export class ReviewDialogComponent {
       .map((_, index) => (index < rating ? 1 : 0));
   }
   getSizeOfReviews() {
-    return this.data.book.reviews.length;
+    if (this.data?.book?.reviews === undefined) {
+      return 0;
+    } else return this.data.book.reviews.length;
   }
 }

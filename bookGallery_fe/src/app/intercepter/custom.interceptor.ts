@@ -4,7 +4,7 @@ import { TokenService } from '../services/token.service';
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
-  console.log('In inteceptor');
+  //console.log('In inteceptor');
   const acccessToken = tokenService.getAccessToken();
   if (acccessToken) {
     const cloneReq = req.clone({

@@ -30,12 +30,13 @@ export class AuthService {
 
   getAuthorProfile(): Observable<Author> {
     const s = this.http.get<Author>(this.profileUrl);
-    console.log(s);
     return s;
   }
   signOut(): Observable<any> {
-    console.log('SignOut');
     this.tokenService.removeAccessToken();
+    this.tokenService.removerefreshToken();
+    this.isAuthenticated$ = of(false);
+    localStorage.removeItem('profile');
     return of({ signout: true });
   }
   signin(signinForm: any): Observable<Auth> {
@@ -43,6 +44,7 @@ export class AuthService {
       username: signinForm['username'],
       password: signinForm['password'],
     });
+    this.isAuthenticated$ = of(true);
     return s;
   }
 }

@@ -31,7 +31,7 @@ export class AuthorComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const authorId = params['authorId'];
       this.loadAuthorData(authorId);
-      console.log(this.author);
+      //console.log(this.author);
     });
   }
 
@@ -42,7 +42,7 @@ export class AuthorComponent implements OnInit {
         this.author = data;
         this.loading = false;
         this.bookReviews = this.author.reviews;
-        console.log(this.author);
+        //console.log(this.author);
       },
       error: (error) => {
         this.error = 'Failed to load author data';
@@ -55,11 +55,11 @@ export class AuthorComponent implements OnInit {
   bookService = inject(BookService);
 
   loadReviews(userId: number) {
-    console.log(userId);
+    //console.log(userId);
 
     this.bookService.getAuthorSReviews(userId).subscribe((reviews) => {
       this.bookReviews = reviews;
-      console.log(this.bookReviews);
+      //console.log(this.bookReviews);
     });
   }
 

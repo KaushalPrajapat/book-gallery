@@ -1,66 +1,14 @@
 <div class="container mx-auto p-4">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    @for (book of books; track book.bookId) {
-    <div class="book-card">
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="p-4">
-          <!-- Title Section: Fixed height -->
-          <div class="title-container mb-3">
-            <h3
-              class="text-lg font-medium text-blue-600"
-              [routerLink]="['/full-book', book.bookId]"
-            >
-              {{ book.bookTitle }}
-            </h3>
-          </div>
-
-          <!-- Description Section: Fixed height -->
-          <div class="description-container mb-3">
-            <p class="text-gray-600 text-sm">
-              {{ book.bookDescription }}
-            </p>
-          </div>
-
-          <!-- Author Section: Fixed height -->
-          <div class="author-container mb-3">
-            <p class="text-teal-500 text-sm">
-              <a
-                mat-button
-                [routerLink]="['/author', book.author.id]"
-                routerLinkActive="router-link-active"
-                class="py-2 hover:bg-gray-50 transition-colors"
-              >
-                {{ book.author.name }}
-              </a>
-            </p>
-          </div>
-
-          <!-- Button Section -->
-          <button
-            mat-button
-            (click)="openReviewDialog(book)"
-            class="w-full text-center py-2 border rounded-md hover:bg-gray-50 transition-colors"
-          >
-            Show Reviews
-          </button>
-        </div>
-      </div>
-    </div>
-    }
+    @if ( books) { @for (book of books; track book.bookId) {
+    <app-single-book [book]="book"></app-single-book>
+    } }
   </div>
-  <!-- Pagination controls -->
-  <div class="mt-8 flex justify-center">
-    <nav class="inline-flex rounded-md shadow">
-      @for (page of pages; track $index) {
-      <button
-        (click)="onPageChange(page)"
-        [class.bg-blue-500]="page === currentPage"
-        [class.text-white]="page === currentPage"
-        class="px-4 py-2 border-r border-gray-300 text-sm font-medium hover:bg-gray-50"
-      >
-        {{ page }}
-      </button>
-      }
-    </nav>
-  </div>
+  <mat-paginator
+    [length]="totalBooks"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage - 1"
+    (page)="onPageChange($event.pageIndex + 1)"
+  >
+  </mat-paginator>
 </div>

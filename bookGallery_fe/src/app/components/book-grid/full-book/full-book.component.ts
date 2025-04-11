@@ -4,6 +4,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BookService } from '../../../services/book.service';
 import { BookSmall } from '../../../models/book.small.model';
 import { BookReview } from '../../../models/bookReview.model';
+import { AppState } from '../../../stores/auth.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-full-book',
@@ -14,30 +16,38 @@ import { BookReview } from '../../../models/bookReview.model';
 export class FullBookViewComponent implements OnInit {
   book: BookSmall | null = null;
   reviews: BookReview[] = [];
-  author : AuthorTemp | undefined;
+  author: AuthorTemp | undefined;
   currentPage = 1;
   doHide: boolean = false;
-  noReview : boolean= false;
+  noReview: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
     const bookId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadBookDetails(bookId);
-    // this.loadReviews(bookId);
+    this.store.select('book').subscribe((state) => {
+      //console.log(state);
+
+      if (state === undefined) {
+        this.loadBookDetails(bookId);
+        this.loadAuthor(bookId);
+      } else {
+        this.book = state;
+      }
+    });
+    // this.loadBookDetails(bookId);
     this.loadAuthor(bookId);
   }
- 
-
 
   loadBookDetails(bookId: number) {
     this.bookService.getBook(bookId).subscribe((book) => {
       this.book = book;
-      this.reviews = book.reviews
-      if(this.reviews.length == 0){
-        this.noReview = true
+      this.reviews = book.reviews;
+      if (this.reviews.length == 0) {
+        this.noReview = true;
       }
     });
   }

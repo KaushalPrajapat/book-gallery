@@ -7,6 +7,7 @@ export const signin = createAction(
   props<{ auth: Auth }>()
 );
 export const signout = createAction('[Header Component] signout');
+
 export const fetchLoggedInAuthor = createAction(
   '[Header Component] fetchLoggedInAuthor',
   props<{ profile: Author }>()
@@ -15,3 +16,5 @@ export const fetchLoggedInAuthor = createAction(
 export const removeLoggedInAuthor = createAction(
   '[Header Componet] (trigger at time of signout) removeLoggedInAuthor'
 );
+
+export const fetchUserName = createAction('[Header Component] fetchUserName');

@@ -13,20 +13,20 @@ export class AuthorService {
   constructor(private http: HttpClient) {}
 
   getAuthorByUserId(authorId: string): Observable<Author> {
-    console.log(localStorage.getItem('accessToken'));
+    //console.log(localStorage.getItem('accessToken'));
     const headers = new HttpHeaders().set(
       'Authorization',
       'Bearer ' + localStorage.getItem('accessToken') || ''
     );
 
 
-    console.log(headers);
+    //console.log(headers);
     return this.http.get<Author>(`${this.apiUrl}/author/${authorId}`, {
       headers: headers,
     });
   }
   getAuthors(pageSize: number, page: number): Observable<Author[]> {
-    console.log(pageSize, page);
+    //console.log(pageSize, page);
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', pageSize.toString());

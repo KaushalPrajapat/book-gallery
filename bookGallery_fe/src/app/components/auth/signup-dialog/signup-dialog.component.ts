@@ -1,55 +1,66 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signup-dialog',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './signup-dialog.component.html',
-  styleUrl: './signup-dialog.component.scss',
+  styleUrls: ['./signup-dialog.component.scss'],
 })
 export class SignupDialogComponent {
   signupForm: FormGroup;
   errorMessage = '';
+  hidePassword = true;
+  hideConfirmPassword = true;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private dialogRef: MatDialogRef<SignupDialogComponent>
   ) {
-    this.signupForm = this.fb.group(
-      {
-        username: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPassword: ['', [Validators.required]],
-        firstName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
-        gender: ['', [Validators.required]],
-        phone: [''],
-        dateOfBirth: [''],
-        jobTitle: [''],
-      },
-      { validator: this.passwordMatchValidator }
-    );
+    this.signupForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      gender: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      jobTitle: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+    }, { validator: this.passwordMatchValidator });
   }
 
-  passwordMatchValidator(g: FormGroup) {
-    return g.get('password')?.value === g.get('confirmPassword')?.value
-      ? null
-      : { mismatch: true };
+  passwordMatchValidator(form: FormGroup) {
+    return form.get('password')?.value === form.get('confirmPassword')?.value
+      ? null : { mismatch: true };
   }
 
   onSubmit() {
     if (this.signupForm.valid) {
-      this.authService.signup(this.signupForm.value).subscribe(
-        (response) => {
-          this.dialogRef.close(true);
+      const { confirmPassword, ...userData } = this.signupForm.value;
+      this.authService.signup(userData).subscribe(
+        response => {
+          this.dialogRef.close(response);
         },
-        (error) => {
-          this.errorMessage = 'Error creating account. Please try again.';
+        error => {
+          this.errorMessage = 'Sign up failed. Please try again.';
         }
       );
     }
