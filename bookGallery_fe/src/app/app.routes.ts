@@ -10,20 +10,29 @@ import { SigninDialogComponent } from './components/auth/signin-dialog/signin-di
 import { SignupDialogComponent } from './components/auth/signup-dialog/signup-dialog.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { authGuard } from './guards/auth.guard';
+import { AllBooksComponent } from './components/book-grid/all-books/all-books.component';
 
 export const routes: Routes = [
-  { path: 'books', component: BookGridComponent },
-  { path: 'full-book/:id', component: FullBookViewComponent },
-  { path: 'author/:authorId', component: AuthorComponent },
-  { path: 'authors', component: AuthorGridComponent },
-  { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninDialogComponent },
-  { path: 'signup', component: SignupDialogComponent },
+  { path: 'books', component: AllBooksComponent, canActivate: [authGuard] },
+  {
+    path: 'full-book/:id',
+    component: FullBookViewComponent,
+    canActivate: [authGuard],
+  },
+  { path: '', component: HomeComponent, canActivate: [] },
+  { path: 'signin', component: SigninDialogComponent, canActivate: [] },
+  { path: 'signup', component: SignupDialogComponent, canActivate: [] },
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [authGuard],
   },
+  {
+    path: 'author/:authorId',
+    component: AuthorComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'authors', component: AuthorGridComponent, canActivate: [authGuard] },
   {
     path: 'books/create-book',
     component: CreateBookComponent,

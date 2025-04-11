@@ -56,7 +56,7 @@ export class CreateReviewComponent {
         ...this.reviewForm.value,
         book: this.bookId,
       };
-      console.log(reviewData);
+      //console.log(reviewData);
 
       this.bookService.addBookReview(reviewData).subscribe(
         () => {

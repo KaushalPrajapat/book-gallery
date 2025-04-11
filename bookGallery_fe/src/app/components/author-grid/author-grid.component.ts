@@ -2,10 +2,11 @@ import { PaginationStateService } from './../../services/pagination-state.servic
 import { Component, Pipe } from '@angular/core';
 import { AuthorService } from '../../services/author.service';
 import { Author } from '../../models/author.model';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-author-grid',
@@ -14,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
+    RouterModule,
+    MatPaginatorModule
   ],
   standalone: true,
   templateUrl: './author-grid.component.html',
@@ -29,10 +32,16 @@ export class AuthorGridComponent {
   filterdAuthor: Author[] = [];
 
   calculatePageSize() {
-    const blockWidth = 350;
+    const blockWidth = 300;
+    const blockHeight = 250;
+    const screenHeight = window.innerHeight;
     const screenWidth = window.innerWidth;
     const columns = Math.floor(screenWidth / blockWidth);
-    this.pageSize = 3 * columns;
+    const rows = Math.floor(screenHeight / blockHeight);
+    //console.log('columns:', columns, 'rows:', rows);
+
+    this.pageSize = rows * columns <= 10 ? 9 : rows * columns;
+    this.pageSize = rows * columns >= 20 ? 18 : rows * columns;
   }
 
   constructor(
@@ -51,12 +60,14 @@ export class AuthorGridComponent {
   }
 
   filterName(search: string)  {
-    console.log(search);
+    //console.log(search);
 
     this.filterdAuthor = this.authors.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
   }
 
   renderAuthor(authorId: number) {
+    //console.log('renderAuthor', authorId);
+
     throw new Error('Method not implemented.');
     }
 
@@ -65,7 +76,7 @@ export class AuthorGridComponent {
       .getAuthors(this.pageSize, this.currentPage - 1)
       .subscribe(
         (response) => {
-          console.log(response);
+          //console.log(response);
           this.authors = response;
           this.filterName('')
         },

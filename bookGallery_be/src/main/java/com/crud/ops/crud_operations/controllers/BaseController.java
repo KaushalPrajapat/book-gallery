@@ -9,13 +9,4 @@ import org.springframework.web.bind.annotation.*;
 public class BaseController {
 
 
-//Book
-
-
-
-
-
-//    Get all reviews for a book
-//    @GetMapping("/")
-
 }

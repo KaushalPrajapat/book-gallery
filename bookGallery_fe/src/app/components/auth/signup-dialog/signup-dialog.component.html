@@ -1,144 +1,113 @@
-<div class="p-6">
-  <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
+<div class="p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto overflow-y-auto" style="max-height: 80vh;">
+  <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600">Sign Up</h2>
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div class="grid grid-cols-2 gap-4">
       <div>
-        <label for="username" class="block text-sm font-medium text-gray-700"
-          >Username</label
-        >
-        <input
-          type="text"
-          id="username"
-          formControlName="username"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
+        <mat-form-field  class="w-full">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" id="firstName" formControlName="firstName" required>
+          <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')">
+            First Name is required
+          </mat-error>
+        </mat-form-field>
       </div>
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700"
-          >Email</label
-        >
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-    </div>
-    <div class="grid grid-cols-2 gap-4">
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700"
-          >Password</label
-        >
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-      <div>
-        <label
-          for="confirmPassword"
-          class="block text-sm font-medium text-gray-700"
-          >Confirm Password</label
-        >
-        <input
-          type="password"
-          id="confirmPassword"
-          formControlName="confirmPassword"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-    </div>
-    <div class="grid grid-cols-2 gap-4">
-      <div>
-        <label for="firstName" class="block text-sm font-medium text-gray-700"
-          >First Name</label
-        >
-        <input
-          type="text"
-          id="firstName"
-          formControlName="firstName"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-      <div>
-        <label for="lastName" class="block text-sm font-medium text-gray-700"
-          >Last Name</label
-        >
-        <input
-          type="text"
-          id="lastName"
-          formControlName="lastName"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
+        <mat-form-field  class="w-full">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" id="lastName" formControlName="lastName" required>
+          <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')">
+            Last Name is required
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div>
-      <label for="gender" class="block text-sm font-medium text-gray-700"
-        >Gender</label
-      >
-      <select
-        id="gender"
-        formControlName="gender"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option value="">Select gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
+      <mat-form-field  class="w-full">
+        <mat-label>Gender</mat-label>
+        <mat-select id="gender" formControlName="gender" required>
+          <mat-option value="">Select gender</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="signupForm.get('gender')?.hasError('required')">
+          Gender is required
+        </mat-error>
+      </mat-form-field>
     </div>
     <div>
-      <label for="phone" class="block text-sm font-medium text-gray-700"
-        >Phone</label
-      >
-      <input
-        type="tel"
-        id="phone"
-        formControlName="phone"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      />
+      <mat-form-field  class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" id="email" formControlName="email" required>
+        <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
     </div>
     <div>
-      <label for="dateOfBirth" class="block text-sm font-medium text-gray-700"
-        >Date of Birth</label
-      >
-      <input
-        type="date"
-        id="dateOfBirth"
-        formControlName="dateOfBirth"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      />
+      <mat-form-field  class="w-full">
+        <mat-label>Phone</mat-label>
+        <input matInput type="tel" id="phone" formControlName="phone" required>
+        <mat-error *ngIf="signupForm.get('phone')?.hasError('required')">
+          Phone is required
+        </mat-error>
+      </mat-form-field>
     </div>
     <div>
-      <label for="jobTitle" class="block text-sm font-medium text-gray-700"
-        >Job Title</label
-      >
-      <input
-        type="text"
-        id="jobTitle"
-        formControlName="jobTitle"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      />
+      <mat-form-field  class="w-full">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput type="date" id="dateOfBirth" formControlName="dateOfBirth" required>
+        <mat-error *ngIf="signupForm.get('dateOfBirth')?.hasError('required')">
+          Date of Birth is required
+        </mat-error>
+      </mat-form-field>
     </div>
-    @if (errorMessage) {
-    <div class="text-red-500 text-sm">{{ errorMessage }}</div>
-    }
+    <div>
+      <mat-form-field  class="w-full">
+        <mat-label>Job Title</mat-label>
+        <input matInput type="text" id="jobTitle" formControlName="jobTitle" required>
+        <mat-error *ngIf="signupForm.get('jobTitle')?.hasError('required')">
+          Job Title is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+      <div>
+        <mat-form-field  class="w-full">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password" required>
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters long
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword" formControlName="confirmPassword" required>
+          <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide confirm password'" [attr.aria-pressed]="hideConfirmPassword">
+            <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('required')">
+            Confirm Password is required
+          </mat-error>
+          <mat-error *ngIf="signupForm?.hasError('mismatch')">
+            Passwords do not match
+          </mat-error>
+        </mat-form-field>
+      </div>
+    <div *ngIf="errorMessage" class="text-red-500 text-sm text-center">{{ errorMessage }}</div>
     <div class="flex justify-end space-x-2">
-      <button
-        type="button"
-        (click)="closeDialog()"
-        class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
+      <button mat-button type="button" (click)="closeDialog()" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         Cancel
       </button>
-      <button
-        type="submit"
-        [disabled]="!signupForm.valid"
-        class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed">
         Sign Up
       </button>
     </div>

@@ -1,0 +1,37 @@
+/* Ensure all book cards have the same height */
+.book-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Title container with a fixed height */
+.title-container {
+  height: 40px; /* Adjust as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Description container with a fixed height and line clamping */
+.description-container {
+  height: 60px; /* Adjust as needed */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+/* Author container with a fixed height */
+.author-container {
+  height: 30px; /* Adjust as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Button section */
+button {
+  margin-top: auto;
+}

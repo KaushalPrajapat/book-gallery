@@ -1,8 +1,8 @@
-import { state } from '@angular/animations';
-import { Auth, } from './auth.model';
+import { Auth } from './auth.model';
 import { createReducer, on } from '@ngrx/store';
 import {
   fetchLoggedInAuthor,
+  fetchUserName,
   removeLoggedInAuthor,
   signin,
   signout,
@@ -30,7 +30,7 @@ export const initialStateProfile: Author = {
 export const authReducer = createReducer(
   initialStateAuth,
   on(signin, (state, action) => {
-    console.log(action);
+    //console.log(action);
     return {
       ...state,
       accessToken: action.auth.accessToken,
@@ -38,6 +38,8 @@ export const authReducer = createReducer(
     };
   }),
   on(signout, (state, action) => {
+    // clear the local storage
+    localStorage.clear();
     return {
       ...state,
       accessToken: '',
@@ -49,8 +51,8 @@ export const authReducer = createReducer(
 export const profileReducer = createReducer(
   initialStateProfile,
   on(fetchLoggedInAuthor, (state, action) => {
-    console.log(action);
-
+    //console.log(action);
+    localStorage.setItem('profile', JSON.stringify(action.profile));
     return {
       ...state,
       id: action.profile.id,
@@ -78,6 +80,12 @@ export const profileReducer = createReducer(
       jobTitle: '',
       books: [],
       reviews: [],
+    };
+  }),
+  on(fetchUserName, (state, action) => {
+    return {
+      ...state,
+      name: state.name,
     };
   })
 );

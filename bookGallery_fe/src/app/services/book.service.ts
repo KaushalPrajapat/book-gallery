@@ -40,7 +40,7 @@ export class BookService {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
-    console.log(params);
+    //console.log(params);
 
     return this.http.get<BookSmall[]>(`${baseUrl}/book?${params}`);
   }
@@ -49,7 +49,7 @@ export class BookService {
   }
   getBookDetails(bookId: number): Observable<BookSmall> {
     var a = this.http.get<BookSmall>(`${baseUrl}/book/${bookId}`);
-    console.log(a);
+    //console.log(a);
     return a;
   }
 

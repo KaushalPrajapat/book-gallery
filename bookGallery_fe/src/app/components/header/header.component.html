@@ -1,26 +1,32 @@
-<header class="bg-white shadow-md">
+<header class="bg-white shadow-md" style="background-color: #e1eff0;">
   <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-2xl font-bold text-gray-800">Book Gallery</a>
+    @if (!isSignedIn) {
+      <a href="/" class="text-2xl font-bold text-gray-800" >Book Gallery</a>
+    }@else {
+      <a href="/books" class="text-2xl font-bold text-gray-800" >Book Gallery</a>
+    }
     <nav>
       <ul class="flex space-x-4">
-        <li><a href="/" class="text-gray-600 hover:text-gray-800">Home</a></li>
-        <li>
-          <a href="/books" class="text-gray-600 hover:text-gray-800">Books</a>
-        </li>
-        <li>
-          <a href="/authors" class="text-gray-600 hover:text-gray-800"
-            >Authors</a
-          >
-        </li>
+        @if (isSignedIn) {
+          <li><a routerLink="/books" class="text-gray-600 hover:text-gray-800">Home</a></li>
+        }
         @if (isSignedIn) {
         <ng-container>
+          <li>
+            <a routerLink="/books" class="text-gray-600 hover:text-gray-800">Books</a>
+          </li>
+          <li>
+            <a routerLink="/authors" class="text-gray-600 hover:text-gray-800"
+              >Authors</a
+            >
+          </li>
           <li>
             @if (!isLoading) {
             <button
               (click)="navigateToProfile()"
               class="text-gray-600 hover:text-gray-800"
             >
-              {{ authorName || "userName" }}
+              {{ authorName || "Unknown" }}
             </button>
             } @if (isLoading) {
             <p class="text-gray-600 hover:text-gray-800">Loading....</p>

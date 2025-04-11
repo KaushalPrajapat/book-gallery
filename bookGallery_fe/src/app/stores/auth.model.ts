@@ -1,3 +1,5 @@
+import { AuthorSmall } from "../models/author.small.model";
+import { BookReview } from "../models/bookReview.model";
 
 
 export class Auth {
@@ -9,3 +11,12 @@ export class Auth {
   }
 }
 
+
+
+export class Book {
+  bookId: number = 0;
+  bookTitle: string = '';
+  bookDescription: string = '';
+  author: AuthorSmall = { id: 0, name: '' };
+  reviews: BookReview[] = [];
+}

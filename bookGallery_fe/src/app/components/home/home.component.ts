@@ -1,5 +1,7 @@
 import { CommonModule } from "@angular/common"
 import { Component } from "@angular/core"
+import { MatDialog } from "@angular/material/dialog";
+import { CreateUserDialogComponent } from "../author-grid/create-user-dialog/create-user-dialog.component";
 
 @Component({
   selector: "app-home",
@@ -8,6 +10,9 @@ import { Component } from "@angular/core"
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent {
+  authorId: any;
+  constructor(
+      private dialog: MatDialog,){}
   features = [
     {
       icon: "fas fa-search",
@@ -53,5 +58,6 @@ export class HomeComponent {
       description: "Add books to your personal shelves and track your reading progress.",
     },
   ]
+
 }
 

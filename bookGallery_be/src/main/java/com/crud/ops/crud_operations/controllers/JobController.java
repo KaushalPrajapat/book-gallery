@@ -30,12 +30,11 @@ public class JobController {
                 .addLong("startAt", System.currentTimeMillis()).toJobParameters();
         try {
             final JobExecution jobExecution = jobLauncher.run(importJob, jobParameters);
-//            System.out.println("SOme");
+
             return jobExecution.getStatus().toString();
         } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException
                  | JobParametersInvalidException e) {
-            e.printStackTrace();
-//            System.out.println(e.getStackTrace());
+//            e.printStackTrace();
             return "Person Job failed with exception: " + e.getMessage();
         }
     }
